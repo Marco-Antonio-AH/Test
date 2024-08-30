@@ -1,4 +1,4 @@
-package mx.marco.xaldigital
+package mx.marco.xaldigital.presentation.screens.splash
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
@@ -12,6 +12,7 @@ import androidx.compose.ui.res.painterResource
 
 import androidx.navigation.NavController
 import kotlinx.coroutines.delay
+import mx.marco.xaldigital.R
 
 @Composable
 fun SplashScreen(navController: NavController) {

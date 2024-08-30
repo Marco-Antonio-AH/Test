@@ -4,15 +4,10 @@ import android.app.Application
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.channels.Channel
-import kotlinx.coroutines.launch
-import mx.marco.xaldigital.data.local.insertRecord
 import mx.marco.xaldigital.data.local.viewData
 import mx.marco.xaldigital.domain.use_case.ListAllUserUseCase
 import mx.marco.xaldigital.presentation.viewmodel.BaseViewModel
-import mx.marco.xaldigital.util.Resource
 import javax.inject.Inject
 
 @HiltViewModel
