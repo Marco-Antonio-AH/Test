@@ -11,10 +11,10 @@ import mx.marco.xaldigital.presentation.screens.history.HistoryScreen
 import mx.marco.xaldigital.presentation.screens.home.HomeScreen
 
 @Composable
-fun Navigation(navController: NavController) {
+fun Navigation(navController: NavHostController) {
     NavHost(
-        navController = navController as NavHostController,
-        startDestination = Screens.SPLASH,
+        navController = navController,
+        startDestination = Screens.SPLASH
     ) {
         composable(Screens.HOME) {
             HomeScreen(navController)
