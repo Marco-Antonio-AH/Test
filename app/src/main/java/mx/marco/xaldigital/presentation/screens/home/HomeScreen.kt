@@ -80,7 +80,7 @@ fun HomeScreen(
                 ) {
                     Text(
                         modifier = Modifier
-                            .offset(x = (10).dp, y = (10).dp)
+                            .offset(x = (10).dp)
                             .verticalScroll(scrollState), text = formattedText
                     )
                 }
