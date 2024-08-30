@@ -29,8 +29,6 @@ class HomeViewModel @Inject constructor(
 
     init {
         initViewState(HomeViewState())
-        fetchListPokemon()
-
     }
 
 
@@ -38,7 +36,7 @@ class HomeViewModel @Inject constructor(
     fun onEvent(event: HomeViewEvent) {
         when (event) {
             is HomeViewEvent.OnSearchTextChange -> onSearchTextChange(event.newSearchText)
-            HomeViewEvent.OnSearchButtonClicked -> fetchListPokemon()
+            HomeViewEvent.OnSearchButtonClicked -> getData()
         }
     }
 
@@ -49,7 +47,7 @@ class HomeViewModel @Inject constructor(
 
     }
 
-    private fun fetchListPokemon() {
+    private fun getData() {
         viewModelScope.launch {
             try {
                 val searchText = state.searchText
@@ -83,29 +81,6 @@ class HomeViewModel @Inject constructor(
             }
         }
     }
-
-
-    /*private fun saveDb(resultData : UserResponse){
-        val record = RecordEntity(name = resultData.name!!)
-        val recordId =  recordDao.insertRecord()
-    }*/
-
-
 }
 
-/*// Ejemplo de inserción
-val user = User(name = "John Doe")
-val userId = userDao.insertUser(user)
 
-val post1 = Post(title = "Primer Post", content = "Contenido del primer post", userOwnerId = userId)
-val post2 = Post(title = "Segundo Post", content = "Contenido del segundo post", userOwnerId = userId)
-
-userDao.insertPost(post1)
-userDao.insertPost(post2)
-
-// Consultar usuario con sus posts
-val userWithPosts = userDao.getUserWithPosts(userId)
-println("Usuario: ${userWithPosts?.user?.name}")
-userWithPosts?.posts?.forEach { post ->
-    println("Post: ${post.title} - ${post.content}")
-}*/
