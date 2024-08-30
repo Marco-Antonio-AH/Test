@@ -45,12 +45,11 @@ fun insertRecord(context: Context, resultData: UserResponse) {
     val database = RecordDatabase.getInstance(context)
     val recordDao = database.recordDao()
     val record = RecordEntity(name = resultData.name!!)
-    println("El nombre es ${resultData.name!!}")
     CoroutineScope(Dispatchers.IO).launch {
         val recordId = recordDao.insertRecord(record)
         resultData.country.forEach { country ->
             recordDao.insertProbability(
-                CountryResponseToProbabilityEntity(
+                countryResponseToProbabilityEntity(
                     recordId = recordId,
                     countryResponse = country
                 )
@@ -73,7 +72,7 @@ fun viewData(context: Context): List<RecordWithProbability> {
 }
 
 
-fun CountryResponseToProbabilityEntity(
+fun countryResponseToProbabilityEntity(
     recordId: Long,
     countryResponse: CountryResponse
 ): ProbabilityEntity {
