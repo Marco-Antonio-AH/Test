@@ -20,14 +20,4 @@ object RepositoryModule {
         ): UserRepository {
         return UserRepositoryImpl(api)
     }
-
-//    @Provides
-//    @Singleton
-//    fun provideLocalRepository(
-//        database: RecordDatabase
-//    ): LocalRepository {
-//        return LocalRepositoryImpl(
-//            database.recordDao()
-//        )
-//    }
 }

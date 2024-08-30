@@ -64,6 +64,7 @@ fun HistoryScreen(
                                 .verticalScroll(scrollState), text = format
                         )
                     }
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
 
             }
