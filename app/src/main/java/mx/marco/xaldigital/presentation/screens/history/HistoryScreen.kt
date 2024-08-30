@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.MaterialTheme
@@ -49,19 +51,21 @@ fun HistoryScreen(
             ) {
                 uiState.recordWithProbability.forEach {
                     val formattedText = it.probabilities.joinToString(separator = "\n\n") { country ->
-                        "Id del país: ${country.countryId}, \nProbabilidad: ${country.probability}"
+                        "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
                     }
                     val format = "${it.record.name}\n$formattedText"
                     Spacer(modifier = Modifier.height(50.dp))
                     CardGeneral(
                         modifier = Modifier
-                            .fillMaxWidth(.74f)
-                            .height(400.dp)
+                            .fillMaxWidth(.54f)
+                            .fillMaxHeight()
+
                     ) {
                         Text(
                             modifier = Modifier
-                                .offset(x = (10).dp, y = (10).dp)
-                                .verticalScroll(scrollState), text = format
+                                .padding(bottom = 10.dp)
+                                .offset(x = (10).dp, y = (10).dp),
+                            text = format
                         )
                     }
                     Spacer(modifier = Modifier.height(20.dp))

@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -34,7 +35,7 @@ fun HomeScreen(
     val uiState = viewModel.state
     val scrollState = rememberScrollState()
     val formattedText = uiState.user.country.joinToString(separator = "\n\n") { country ->
-        "Id del país: ${country.countryId}, \nProbabilidad: ${country.probability}"
+        "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
     }
 
 
@@ -75,13 +76,16 @@ fun HomeScreen(
                 Spacer(modifier = Modifier.fillMaxHeight(.08f))
                 CardGeneral(
                     modifier = Modifier
-                        .fillMaxWidth(.74f)
+                        .fillMaxWidth(.54f)
                         .fillMaxHeight(.68f)
+                        .align(Alignment.CenterHorizontally)
                 ) {
                     Text(
                         modifier = Modifier
-                            .offset(x = (10).dp)
-                            .verticalScroll(scrollState), text = formattedText
+                            .offset(x = (8).dp,)
+                            .wrapContentHeight()
+                            .verticalScroll(scrollState),
+                        text = formattedText
                     )
                 }
                 Spacer(modifier = Modifier.fillMaxHeight(.09f))
