@@ -43,10 +43,7 @@ fun HistoryScreen(
         darkIconsStatusBar = false
     ) {
 
-        Text(modifier = Modifier
-            .padding(12.dp)
-            .align(Alignment.TopCenter),
-            text = "Historial de búsqueda")
+
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
 
             Column(
@@ -56,13 +53,16 @@ fun HistoryScreen(
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
+                Text(modifier = Modifier
+                    .padding(top = 28.dp),
+                    text = "Historial de búsqueda")
                 uiState.recordWithProbability.forEach {
                     val formattedText =
                         it.probabilities.joinToString(separator = "\n\n") { country ->
                             "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
                         }
                     val format = "${it.record.name}\n$formattedText"
-                    Spacer(modifier = Modifier.height(50.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
                     CardGeneral(
                         modifier = Modifier
                             .fillMaxWidth(.54f)

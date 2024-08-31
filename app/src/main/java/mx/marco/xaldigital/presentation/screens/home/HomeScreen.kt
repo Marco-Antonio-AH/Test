@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -52,7 +53,10 @@ fun HomeScreen(
                     .fillMaxHeight(1f),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Spacer(modifier = Modifier.fillMaxHeight(.09f))
+                Text(modifier = Modifier
+                    .padding(top = 22.dp),
+                    text = "Búsqueda")
+                Spacer(modifier = Modifier.fillMaxHeight(.03f))
 
                 OutlinedTextField(
                     value = uiState.searchText,
