@@ -1,6 +1,7 @@
 package mx.marco.xaldigital.presentation.screens.home
 
 
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
@@ -74,12 +75,22 @@ fun HomeScreen(
                     label = { Text("Ingrese un nombre") }
                 )
                 Spacer(modifier = Modifier.fillMaxHeight(.08f))
-                Button(modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-                    .fillMaxWidth(.4f),
+                Button(
+                    modifier = Modifier
+                        .align(Alignment.CenterHorizontally)
+                        .fillMaxWidth(.4f),
                     onClick = {
-                        viewModel.onEvent(HomeViewEvent.OnSearchButtonClicked)
-                    }) {
+                        if (uiState.searchText.isBlank()) {
+                            Toast.makeText(
+                                navController.context,
+                                "Por favor ingrese un nombre",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        } else {
+                            viewModel.onEvent(HomeViewEvent.OnSearchButtonClicked)
+                        }
+                    }
+                ) {
                     Text(text = "Predecir", color = Color.Black)
                 }
                 Spacer(modifier = Modifier.fillMaxHeight(.02f))
