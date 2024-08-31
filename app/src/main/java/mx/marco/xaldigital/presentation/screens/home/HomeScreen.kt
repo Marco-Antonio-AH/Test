@@ -77,7 +77,7 @@ fun HomeScreen(
                     }) {
                     Text(text = "Predecir", color = Color.Black)
                 }
-                Spacer(modifier = Modifier.fillMaxHeight(.08f))
+                Spacer(modifier = Modifier.fillMaxHeight(.02f))
                 CardGeneral(
                     modifier = Modifier
                         .fillMaxWidth(.54f)
