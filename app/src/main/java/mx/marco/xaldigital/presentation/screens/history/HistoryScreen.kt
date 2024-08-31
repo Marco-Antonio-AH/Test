@@ -1,6 +1,7 @@
 package mx.marco.xaldigital.presentation.screens.history
 
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -17,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -40,7 +42,13 @@ fun HistoryScreen(
         colorStatusBar = MaterialTheme.colorScheme.primary,
         darkIconsStatusBar = false
     ) {
+
+        Text(modifier = Modifier
+            .padding(12.dp)
+            .align(Alignment.TopCenter),
+            text = "Historial de búsqueda")
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+
             Column(
                 modifier = Modifier
                     .fillMaxWidth(1f)
@@ -49,9 +57,10 @@ fun HistoryScreen(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 uiState.recordWithProbability.forEach {
-                    val formattedText = it.probabilities.joinToString(separator = "\n\n") { country ->
-                        "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
-                    }
+                    val formattedText =
+                        it.probabilities.joinToString(separator = "\n\n") { country ->
+                            "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
+                        }
                     val format = "${it.record.name}\n$formattedText"
                     Spacer(modifier = Modifier.height(50.dp))
                     CardGeneral(
