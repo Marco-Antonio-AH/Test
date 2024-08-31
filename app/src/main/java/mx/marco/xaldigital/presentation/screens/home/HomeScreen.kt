@@ -1,6 +1,8 @@
 package mx.marco.xaldigital.presentation.screens.home
 
 
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -39,6 +41,9 @@ fun HomeScreen(
         "Id del país: ${country.countryId}, \nProbabilidad: \n${country.probability}"
     }
 
+    BackHandler {
+        (navController.context as? ComponentActivity)?.finish()
+    }
 
     Screen(
         paddingTop = false,
